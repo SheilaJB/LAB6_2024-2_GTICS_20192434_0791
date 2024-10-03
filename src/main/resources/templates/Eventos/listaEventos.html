@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+<head >
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <title>Lista de Eventos</title>
 </head>
 <body>
-$END$
+<header th:replace="~{fragmentos/navbar :: nav_bar}"></header>
+<main>
+    <div class="container px-4 pb-5">
+
+        <h1 class="pb-2 border-bottom">Lista de Eventos</h1>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/eventos/new'}">Nuevo Evento</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Fecha de inicio</th>
+                <th>Asistencia Confirmada</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each=" evento : ${eventos}">
+                <td th:text="${evento.id}"></td>
+                <td th:text="${evento.nombre}"></td>
+                <td th:text="${evento.fecha}"></td>
+                <td th:text="${evento.asistentesEsperados}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/eventos/edit' + '?id=' + ${evento.id}}">Editar</a>
+                </td>
+                <td><a class="btn btn-danger" th:href="@{'/eventos/delete' + '?id=' + ${evento.id}}">Borrar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>

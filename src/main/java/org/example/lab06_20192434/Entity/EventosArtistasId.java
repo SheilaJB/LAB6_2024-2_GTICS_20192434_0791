@@ -1,4 +1,18 @@
 package org.example.lab06_20192434.Entity;
 
-public class EventosArtistas {
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+
+import java.io.Serializable;
+
+@Embeddable
+public class EventosArtistasId implements Serializable {
+
+    @Column(name = "eventoId")
+    private Integer eventoId;
+
+    @Column(name = "artistaId")
+    private Integer artistaId;
+
+
 }
